@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/:path*",
+      "destination": "https://wolfman.uz/:path*"
+    },
+    {
+      "source": "/:path*/",
+      "destination": "https://wolfman.uz/:path*/"
+    }
+  ]
+}

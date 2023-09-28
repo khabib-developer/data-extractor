@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
    async function service(base64, width, height) {
 
       try {
-         const response = await fetch("https://wolfman.uz/predict/", {
+         const response = await fetch("/predict/", {
             // mode: 'no-cors',
             method: 'POST',
             headers: {

@@ -1,0 +1,72 @@
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.h-full {
+    height: 100%;
+}
+
+.flex-1 {
+    flex: 1
+}
+
+.p-3 {
+    padding: 24px
+}
+
+.gap-4 {
+    gap: 32px
+}
+
+.absolute {
+    position: absolute
+}
+
+.relative {
+    position: relative
+}
+
+.hidden {
+  display: none !important
+}
+
+.bg-black {
+    background-color:#000 !important
+}
+
+.border-2 {
+    border: 2px solid #ccc
+}
+
+.border-dotted {
+    border-style: dotted !important;
+}
+
+.m-0 {
+    margin: 0 !important
+}
+
+.rounded-md {
+    border-radius: 16px;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
