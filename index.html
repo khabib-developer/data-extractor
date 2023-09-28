@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Image Editor in JavaScript | CodingNepal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="loader.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div class="container disable">
+    <div class="wrapper gap-4">
+        <div class="preview-img w-full justify-around flex-1 !m-0 flex flex-col pt-2">
+            <div class="border-2 border-dotted p-1 flex w-full justify-center items-center rounded-md file__upload overflow-hidden">
+                <img src="default.png" height="100%" alt="preview-img">
+            </div>
+            <div class="edit-panel w-full pt-3 flex gap-3">
+                <div class="rotate-button flex gap-3">
+                    <button class="border-2 rounded-md left-rotate px-2">
+                        <i class="fa-solid fa-rotate-left"></i>
+                    </button>
+                    <button class="border-2 rounded-md right-rotate px-2">
+                        <i class="fa-solid fa-rotate-right"></i>
+                    </button>
+                </div>
+                <div class="flex items-center w-full gap-2">
+                    <input disabled type="range" class="w-full" min="-180" id="rotateAngle" value="0" step="1" max="180"
+                           name="left"/>
+                    <label for="rotateAngle" class="w-1/6">Angle: <span class="rotate__angle__value">0</span></label>
+                </div>
+            </div>
+        </div>
+        <div class="flex-1 text-center relative">
+            <span>Information</span>
+            <div class="information-wrapper p-3 gap-4 flex flex-col">
+                <div class="flex">
+                   <span>Familiyasi: &nbsp;</span>
+                    <span data-label="familiyasi"></span>
+                </div>
+                <div class="flex">
+                    <span>Ismi: &nbsp;</span>
+                    <span class="information-text" data-label="ismi"></span>
+                </div>
+                <div class="flex">
+                    <span>Jinsi: &nbsp;</span>
+                    <span class="information-text" data-label="jinsi"></span>
+                </div>
+                <div class="flex">
+                    <span>Otasining ismi: &nbsp;</span>
+                    <span class="information-text" data-label="otasining ismi"></span>
+                </div>
+                <div class="flex">
+                    <span>Tug'ilgan sanasi: &nbsp;</span>
+                    <span class="information-text" data-label="tug'ilgan sanasi"></span>
+                </div>
+                <div class="flex">
+                    <span>Tug'ilgan joyi: &nbsp;</span>
+                    <span class="information-text" data-label="tug'ilgan joyi"></span>
+                </div>
+                <div class="flex">
+                    <span>Millati: &nbsp;</span>
+                    <span class="information-text" data-label="millati"></span>
+                </div>
+                <div class="flex">
+                    <span>Kim tomonidan berilgan: &nbsp;</span>
+                    <span class="information-text" data-label="kim tomonidan berilgan"></span>
+                </div>
+
+            </div>
+            <div class="loader w-full absolute top-0 !hidden w-full h-full flex items-center justify-center">
+                <div class="lds-roller">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="controls">
+        <div class="row">
+            <input type="file" class="file-input opacity-0 absolute" accept="image/*">
+            <button class="choose-img">Choose Image</button>
+            <button disabled class="fetch-img !bg-black">Get information</button>
+        </div>
+    </div>
+</div>
+
+
+<script src="index.js"></script>
+
+</body>
+</html>

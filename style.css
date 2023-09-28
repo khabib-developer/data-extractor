@@ -1,0 +1,146 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background: #E3F2FD;
+}
+.container {
+    width: 850px;
+    padding: 30px 35px 35px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.container.disable .editor-panel,
+.container.disable .controls .reset-filter,
+.container.disable .controls .save-img {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.container h2 {
+    margin-top: -8px;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.container .wrapper {
+    display: flex;
+    margin: 20px 0;
+    /*max-height: 80vh;*/
+}
+
+
+.file__upload {
+    min-height: calc(80vh - 20px);
+}
+
+
+.file-input {
+    width: 5.5%;
+    position:absolute;
+    cursor: pointer;
+}
+
+
+.wrapper .preview-img {
+    flex-grow: 1;
+    display: flex;
+    overflow: hidden;
+    margin-left: 20px;
+    border-radius: 5px;
+    align-items: self-start;
+}
+
+.controls button {
+    padding: 11px 20px;
+    font-size: 14px;
+    border-radius: 3px;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+    background: none;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+
+.controls .choose-img {
+    background: #6C757D;
+    border: 1px solid #6C757D;
+}
+
+@media screen and (max-width: 1440px) {
+    .preview-img img {
+        max-width: 350px;
+    }
+
+    .file__upload {
+        min-height: calc(50vh - 70px)
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .wrapper {
+        flex-direction: column;
+    }
+}
+
+
+
+
+@media screen and (max-width: 760px) {
+    .container {
+        padding: 25px;
+    }
+
+    .container .wrapper {
+        flex-wrap: wrap-reverse;
+    }
+
+    .wrapper .editor-panel {
+        width: 100%;
+    }
+
+    .wrapper .preview-img {
+        width: 100%;
+        margin: 0 0 15px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .controls button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .controls .row {
+        width: 100%;
+    }
+
+    .controls .row .save-img {
+        margin-left: 0px;
+    }
+
+    .preview-img img {
+        max-width: 280px;
+    }
+
+    .container {
+        padding: 8px
+    }
+
+
+}
