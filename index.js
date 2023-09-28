@@ -128,8 +128,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 })
-
-// const link = document.createElement("a");
-// link.download = "image.jpg";
-// link.href = canvas.toDataURL();
-// link.click();
