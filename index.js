@@ -186,12 +186,12 @@ document.addEventListener("DOMContentLoaded", () => {
    }
 
    function renderImageFromBase64(image) {
-      if (image) {
+      if (image !== 'undefined') {
          avatar.src = `data:image/jpg;base64,${image}`
          undefinedImage.classList.add("hidden")
          return
       }
-      avatar.src = 'image.png'
+      avatar.setAttribute('src', 'image.png')
       undefinedImage.classList.remove("hidden")
    }
 
