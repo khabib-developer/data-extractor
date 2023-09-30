@@ -64,6 +64,10 @@ body {
     align-items: self-start;
 }
 
+.ocr-information {
+    overflow-wrap: anywhere;
+}
+
 .controls button {
     padding: 11px 20px;
     font-size: 14px;
@@ -80,6 +84,10 @@ body {
 .controls .choose-img {
     background: #6C757D;
     border: 1px solid #6C757D;
+}
+
+.img-container img {
+    width: 60%;
 }
 
 @media screen and (max-width: 1440px) {

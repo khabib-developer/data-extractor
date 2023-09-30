@@ -15,7 +15,7 @@
 <body>
 <div class="container disable">
     <div class="wrapper gap-4">
-        <div class="preview-img w-full justify-around flex-1 !m-0 flex flex-col pt-2">
+        <div class="preview-img w-full w-1/2 justify-around flex-1 !m-0 flex flex-col pt-2">
             <div class="border-2 border-dotted p-1 flex w-full justify-center items-center rounded-md file__upload overflow-hidden">
                 <img src="default.png" height="100%" alt="preview-img">
             </div>
@@ -35,42 +35,19 @@
                 </div>
             </div>
         </div>
-        <div class="flex-1 text-center relative">
+        <div class="flex-1 text-center w-1/2 relative">
             <span>Information</span>
-            <div class="information-wrapper p-3 gap-4 flex flex-col">
-                <div class="flex">
-                   <span>Familiyasi: &nbsp;</span>
-                    <span data-label="familiyasi"></span>
-                </div>
-                <div class="flex">
-                    <span>Ismi: &nbsp;</span>
-                    <span class="information-text" data-label="ismi"></span>
-                </div>
-                <div class="flex">
-                    <span>Jinsi: &nbsp;</span>
-                    <span class="information-text" data-label="jinsi"></span>
-                </div>
-                <div class="flex">
-                    <span>Otasining ismi: &nbsp;</span>
-                    <span class="information-text" data-label="otasining ismi"></span>
-                </div>
-                <div class="flex">
-                    <span>Tug'ilgan sanasi: &nbsp;</span>
-                    <span class="information-text" data-label="tug'ilgan sanasi"></span>
-                </div>
-                <div class="flex">
-                    <span>Tug'ilgan joyi: &nbsp;</span>
-                    <span class="information-text" data-label="tug'ilgan joyi"></span>
-                </div>
-                <div class="flex">
-                    <span>Millati: &nbsp;</span>
-                    <span class="information-text" data-label="millati"></span>
-                </div>
-                <div class="flex">
-                    <span>Kim tomonidan berilgan: &nbsp;</span>
-                    <span class="information-text" data-label="kim tomonidan berilgan"></span>
+            <div class="information-wrapper p-3 gap-4 flex flex-col capitalize">
+
+            </div>
+            <div class="px-3 pt-1 flex flex-col items-start gap-3">
+                <span>Image:&nbsp;<span class="undefined-image italic hidden">undefined</span></span>
+                <div class="img-container w-1/5">
+                    <img alt="default" class="avatar-mg" width="100%" src="image.png"/>
                 </div>
 
+            </div>
+            <div class="ocr-information pt-3 hidden">
             </div>
             <div class="loader w-full absolute top-0 !hidden w-full h-full flex items-center justify-center">
                 <div class="lds-roller">
@@ -88,13 +65,19 @@
 
     </div>
     <div class="controls">
-        <div class="row">
+        <div class="row flex">
+            <div class="w-1/2">
+                <button class="choose-img relative">
+                    <input type="file" class="file-input left-0 top-0 opacity-0 w-full h-full absolute"
+                           accept="image/*">
+                    <span>Choose Image</span>
+                </button>
+                <button disabled class="fetch-img !bg-black">Get information</button>
+            </div>
+            <div class="w-1/2 px-4">
+                <button class="ocr-information-btn hidden !bg-black">More OCR information</button>
+            </div>
 
-            <button class="choose-img relative">
-                <input type="file" class="file-input left-0 top-0 opacity-0 w-full h-full absolute" accept="image/*">
-                <span>Choose Image</span>
-            </button>
-            <button disabled class="fetch-img !bg-black">Get information</button>
         </div>
     </div>
 </div>
