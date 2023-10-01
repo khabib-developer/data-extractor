@@ -42,6 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
    let ocrInformationList = []
 
+   let globalFile = null
+
    renderFeatures(wrapper)
 
    rotateAngle.addEventListener("input", updatePreview)
@@ -90,6 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
       rotateAngle.removeAttribute("disabled")
       submit.removeAttribute("disabled")
       previewImg.src = URL.createObjectURL(file);
+      setImageData(file)
    }
 
    function updatePreview({target: {value}}) {
@@ -102,29 +105,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
       startLoading()
 
-      const canvas = document.createElement("canvas");
-      const ctx = canvas.getContext("2d");
-      canvas.width = previewImg.naturalWidth;
-      canvas.height = previewImg.naturalHeight;
+      if(globalFile) {
 
-      ctx.translate(canvas.width / 2, canvas.height / 2);
-      if (rotate !== 0) {
-         ctx.rotate(rotate * Math.PI / 180);
+         const reader = new FileReader()
+
+         reader.onload = async (e) => {
+            const base64Data = e.target.result
+
+            await service(base64Data,  rotate)
+
+         }
+
+         reader.readAsDataURL(globalFile)
+
       }
-      ctx.drawImage(previewImg, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
 
-      await service(canvas.toDataURL("image/jpeg"), canvas.width, canvas.height)
+
+      // const canvas = document.createElement("canvas");
+      // const ctx = canvas.getContext("2d");
+      //
+      // canvas.width = previewImg.naturalWidth
+      // canvas.height = previewImg.naturalHeight
+      //
+      // ctx.translate(canvas.width / 2, canvas.height / 2);
+      // if (rotate !== 0) {
+      //    ctx.rotate(rotate * Math.PI / 180);
+      // }
+      // ctx.drawImage(previewImg, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
+
+      // await service(canvas.toDataURL("image/jpeg"), canvas.width, canvas.height)
    }
 
-   async function service(base64, width, height) {
+   async function service(base64, rotation) {
       try {
          const response = await fetch("https://wolfman.uz/predict/", {
-            // mode: 'no-cors',
             method: 'POST',
             headers: {
                'Content-Type': 'application/json',
             },
-            body: JSON.stringify({base64, shape: {width, height}}),
+            body: JSON.stringify({base64, rotation}),
          })
 
          const result = await response.json()
@@ -149,11 +168,11 @@ document.addEventListener("DOMContentLoaded", () => {
          const last = i === features.length - 1
          return `
             <div class="flex">
-                 <span class="${last&&"text-green-600"}">
+                 <span class="${last && "text-green-600"}">
                     ${
-                     last ? "CPU " + item.toLowerCase() 
-                         : item.toLowerCase()
-                     }: &nbsp;
+             last ? "CPU " + item.toLowerCase()
+                 : item.toLowerCase()
+         }: &nbsp;
                     </span>
                  <span class="information-text" data-label="${item}"></span>
              </div>
@@ -164,7 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
    function renderInformation(result) {
       let count = 0
       features.forEach((item, i) => {
-         if(!result[item.toUpperCase()]) count++
+         if (!result[item.toUpperCase()]) count++
          let text = result[item.toUpperCase()] ? result[item.toUpperCase()] : '<span class="italic normal-case">undefined</span>'
          if (i === 4 || i === 14 || i === 17 || i === 18) {
             text = text.replace(/(\d{2})[ \.]*(\d{2})[ \.]*(\d{4})/g, "$1.$2.$3");
@@ -174,7 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
          span.innerHTML = `${text}`
       })
 
-      if(count > 3) ocrButton.classList.remove('hidden')
+      if (count > 3) ocrButton.classList.remove('hidden')
       else ocrButton.classList.add('hidden')
    }
 
@@ -193,6 +212,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       avatar.setAttribute('src', 'image.png')
       undefinedImage.classList.remove("hidden")
+   }
+
+   function setImageData(_file) {
+      globalFile = _file
    }
 
    function startLoading() {
