@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
    const undefinedImage = document.querySelector(".undefined-image")
    const ocrInformation = document.querySelector(".ocr-information")
    const ocrButton = document.querySelector(".ocr-information-btn")
+   const imageName = document.querySelector(".image-name")
    let rotate = 0
 
    let ocrInformationList = []
@@ -91,7 +92,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!file) return;
       rotateAngle.removeAttribute("disabled")
       submit.removeAttribute("disabled")
+      updatePreview({target:{value:0}})
       previewImg.src = URL.createObjectURL(file);
+      imageName.textContent = file.name
       setImageData(file)
    }
 
@@ -112,8 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
          reader.onload = async (e) => {
             const base64Data = e.target.result
 
-            await service(base64Data,  rotate)
-
+            await service(base64Data, rotate)
          }
 
          reader.readAsDataURL(globalFile)
@@ -230,3 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 })
+
+
+
+

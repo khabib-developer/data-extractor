@@ -47,6 +47,9 @@ body {
     min-height: calc(80vh - 20px);
 }
 
+.file__upload img {
+    transition: all .4s ease;
+}
 
 .file-input {
     width: 5.5%;
