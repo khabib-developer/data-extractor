@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
    const ocrInformation = document.querySelector(".ocr-information")
    const ocrButton = document.querySelector(".ocr-information-btn")
    const imageName = document.querySelector(".image-name")
+   const error = document.querySelector(".error")
    let rotate = 0
 
    let ocrInformationList = []
@@ -121,8 +122,6 @@ document.addEventListener("DOMContentLoaded", () => {
          reader.readAsDataURL(globalFile)
 
       }
-
-
       // const canvas = document.createElement("canvas");
       // const ctx = canvas.getContext("2d");
       //
@@ -158,7 +157,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
          renderImageFromBase64(result[1].image)
 
+         error.classList.add("hidden")
+
       } catch (e) {
+         error.classList.remove("hidden")
          console.log(e)
       } finally {
          stopLoading()
@@ -172,9 +174,8 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="flex">
                  <span class="${last && "text-green-600"}">
                     ${
-             last ? "CPU " + item.toLowerCase()
-                 : item.toLowerCase()
-         }: &nbsp;
+                         last ? "CPU " + item.toLowerCase() : item.toLowerCase()
+                     }: &nbsp;
                     </span>
                  <span class="information-text" data-label="${item}"></span>
              </div>
